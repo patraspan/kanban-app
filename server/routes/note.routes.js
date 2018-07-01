@@ -5,6 +5,7 @@ const router = new Router();
 
 // Add new note
 router.route('/notes').post(NoteController.addNote);
+
 // Edit a Note
 router.route('/notes').put(NoteController.editNote);
 
