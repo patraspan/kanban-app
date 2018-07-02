@@ -1,4 +1,16 @@
-/* Kanban styles */
-.AddLane {
-    display: block;
-}
+.KanbanHeader {
+    text-align: center;
+    margin: 30px;
+  }
+  
+  .AddLane {
+    margin: 20px;
+    padding: 10px 30px;
+    background-color: rgb(255, 184, 64);
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .AddLane i {
+    margin-left: 10px;
+  }

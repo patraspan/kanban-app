@@ -1,1 +1,69 @@
 /* Lane styles */
+.Lane {
+    border: 2px solid rgb(254, 180, 37);
+    border-radius: 6px;
+    margin: 20px;
+    width: 400px;
+  }
+  
+  .LaneHeader button {
+    background-color: #fff0;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    margin: 15px 40px 0;
+    cursor: pointer;
+  }
+  
+  .LaneDelete {
+    text-align: right;
+  }
+  
+  .LaneName {
+    text-align: center;
+    border-bottom: 3px solid rgb(254, 180, 37);
+    padding-bottom: 24px;
+    margin-top: -20px;
+  }
+  
+  .LaneName span {
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .LaneAddNote {
+    margin: 10px auto;
+  }
+  .AddNote {
+    margin: 20px;
+    padding: 10px 30px;
+    background-color: rgb(255, 184, 64);
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .AddNote i {
+    margin-left: 10px;
+  }
+  /* Lanes styles */
+  
+  .Lanes {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .LanesWrapper {
+    display: grid;
+    overflow: auto;
+  }
+  
+  .LaneEdit {
+    background-color: #2424248a;
+    color: rgb(247, 247, 247);
+    padding: 5px 10px;
+    font-size: 15px;
+    width: 160px;
+    font-weight: 300;
+    outline: none;
+    text-align: center;
+  }
