@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 
 export default class Edit extends Component {
   checkEnter = (e) => {
-    const code = (e.keyCode ? e.keyCode : e.which);
-    if (code === 13) {
+    // const code = (e.keyCode ? e.keyCode : e.which);
+    if (e.key === 'Enter') {
       this.finishEdit(e);
+      console.log('hit enter');
     }
   }
   finishEdit = (e) => {

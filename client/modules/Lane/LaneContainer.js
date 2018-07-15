@@ -1,7 +1,13 @@
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { DropTarget } from 'react-dnd';
-
+import {
+  connect
+} from 'react-redux';
+import {
+  compose
+} from 'redux';
+import {
+  DropTarget
+} from 'react-dnd';
+import callApi from '../../util/apiCaller';
 import ItemTypes from '../Kanban/itemTypes';
 import Lane from './Lane';
 import {
@@ -10,8 +16,13 @@ import {
   deleteLaneRequest,
   updateLaneRequest,
   moveBetweenLanes,
- } from './LaneActions';
-import { createNoteRequest } from '../Note/NoteActions';
+  removeFromLane,
+  pushToLane,
+  changeLanesRequest,
+} from './LaneActions';
+import {
+  createNoteRequest
+} from '../Note/NoteActions';
 
 const mapStateToProps = (state, ownProps) => ({
   laneNotes: ownProps.lane.notes.map(noteId => state.notes[noteId]),
@@ -24,22 +35,28 @@ const mapDispatchToProps = {
   addNote: createNoteRequest,
   createLane: createLaneRequest,
   moveBetweenLanes,
+  removeFromLane,
+  pushToLane,
+  changeLanesRequest,
 };
 
 const noteTarget = {
-  hover(targetProps, monitor) {
+  drop(targetProps, monitor) {
     const sourceProps = monitor.getItem();
     const {
       id: noteId,
       laneId: sourceLaneId,
+      _id: note_id,
     } = sourceProps;
-
-    if (!targetProps.lane.notes.length) {
-      targetProps.moveBetweenLanes(
-        targetProps.lane.id,
-        noteId,
-        sourceLaneId,
-      );
+    if (targetProps.lane.id !== sourceLaneId) {
+      const newTargetNotes = targetProps.laneNotes.map(note => note._id);
+      newTargetNotes.push(note_id);
+      targetProps.changeLanesRequest(sourceLaneId, targetProps.lane.id, noteId, newTargetNotes);
+    } else {
+      const notes = targetProps.laneNotes.map(note => note._id);
+      callApi(`lanes/${sourceLaneId}`, 'put', {
+        notes
+      });
     }
   },
 };
