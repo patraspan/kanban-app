@@ -1,20 +1,19 @@
-import React, { PropTypes } from 'react';
-import NotesContainer from '../Note/NoteContainer';
+import React from 'react';
+import PropTypes from 'prop-types';
+import NotesContainer from '../Note/NotesContainer';
 import Edit from '../../components/Edit';
 import styles from './Lane.css';
 
-const Lane = (props) => {
-  const { lane, laneNotes, updateLane, addNote, deleteLane, editLane, connectDropTarget } = props;
+const Lane = props => {
+  const { connectDropTarget, lane, laneNotes, updateLane, addNote, deleteLane, editLane } = props;
   const laneId = lane.id;
 
   return connectDropTarget(
     <div className={styles.Lane}>
       <div className={styles.LaneHeader}>
-        <div className={styles.LaneAddNote}>
-          <button
-            className={styles.AddNote}
-            onClick={() => addNote({ task: 'New Note' }, laneId)}
-          >Add Note
+        <div className={styles.LaneDelete}>
+          <button onClick={() => deleteLane(laneId)}>
+            <i className="fa fa-trash-o" aria-hidden="true"></i>
           </button>
         </div>
         <Edit
@@ -25,12 +24,13 @@ const Lane = (props) => {
           onValueClick={() => editLane(lane.id)}
           onUpdate={name => updateLane({ ...lane, name, editing: false })}
         />
-        <div className={styles.LaneDelete}>
-          <button
-            className={styles.deleteNote}
-            onClick={() => deleteLane(laneId)}
-          >Remove Lane
-          </button>
+        <div className={styles.LaneAddNote}>
+          <span
+            className={styles.AddNote}
+            onClick={() => addNote({ task: 'New Note' }, laneId)}
+          >
+            Add note<i className="fa fa-plus-circle" aria-hidden="true"></i>
+          </span>
         </div>
       </div>
       <NotesContainer

@@ -15,7 +15,7 @@ export function createLane(lane) {
   return {
     type: CREATE_LANE,
     lane: {
-      notes: lane.notes || [],
+      notes: [],
       ...lane,
     },
   };
@@ -87,3 +87,4 @@ export function moveBetweenLanes(targetLaneId, noteId, sourceLaneId) {
     sourceLaneId,
   };
 }
+

@@ -1,13 +1,21 @@
-import React, { PropTypes } from 'react';
-import Lane from './Lane.js';
-
+import React from 'react';
+import PropTypes from 'prop-types';
+import Lane from './LaneContainer.js';
 import styles from './Lane.css';
 
 const Lanes = ({ lanes }) => {
   return (
-    <div className={styles.lanes}>{lanes.map(lane =>
-      <Lane className={styles.lane} key={lane.id} lane={lane} />
-    )}</div>
+    <div className={styles.LanesWrapper}>
+      <div className={styles.Lanes}>
+        {lanes.map(lane =>
+          <Lane
+            className={styles.Lane}
+            key={lane.id}
+            lane={lane}
+          />)
+        }
+      </div>
+    </div>
   );
 };
 

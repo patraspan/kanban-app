@@ -1,3 +1,4 @@
+
 /*
   Global CSS file
 */
@@ -28,7 +29,22 @@ input:-moz-placeholder {
 }
 
 body {
-	background: #FFF;
+	background: #487eb0;
+	color: #f5f6fa;
 	font-family: 'Lato', sans-serif;
 	font-size: 16px;
+	overflow-y: hidden;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-thumb {
+	background: #888; 
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #555; 
 }

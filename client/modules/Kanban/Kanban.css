@@ -1,14 +1,24 @@
 .KanbanHeader {
+    padding: 0 30px;
     text-align: center;
-    margin: 30px;
+    height: 75px;
+    background: #353b48;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .KanbanHeader h1 {
+   flex: 4;
   }
   
   .AddLane {
-    margin: 20px;
+    text-transform: uppercase;
     padding: 10px 30px;
-    background-color: rgb(255, 184, 64);
+    background-color: #c23616;
+    color: #f5f6fa;
     border: none;
     border-radius: 5px;
+    flex: 1;
   }
   
   .AddLane i {
